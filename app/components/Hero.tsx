@@ -32,8 +32,19 @@ export default function Hero() {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 40%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 40%, transparent 70%)",
           }}
+        />
+        {/* Secondary offset glow for depth */}
+        <div
+          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 65%)",
+          }}
+        />
+        <div
+          className="absolute top-0 left-0 w-full h-16"
+          style={{ background: "linear-gradient(to bottom, rgba(5,5,5,0.6), transparent)" }}
         />
         <div
           className="absolute bottom-0 left-0 w-full h-1/3"
@@ -65,23 +76,39 @@ export default function Hero() {
       >
         {/* Pre-headline */}
         <motion.div
-          initial={{ opacity: 0, letterSpacing: "0.1em" }}
-          animate={{ opacity: 1, letterSpacing: "0.5em" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.2 }}
-          style={{ fontFamily: "var(--font-body)" }}
-          className="text-[10px] text-[#C9A84C] uppercase mb-8 tracking-[0.5em]"
+          className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
         >
-          Est. 1987 · Maison de Alta Joyeria
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="hidden xs:block w-10 h-px bg-gradient-to-r from-transparent to-[#C9A84C]/50 origin-right"
+          />
+          <span
+            style={{ fontFamily: "var(--font-body)" }}
+            className="text-[9px] sm:text-[10px] text-[#C9A84C] uppercase tracking-[0.3em] sm:tracking-[0.5em] whitespace-nowrap"
+          >
+            Est. 1987 · Maison de Alta Joyeria
+          </span>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="hidden xs:block w-10 h-px bg-gradient-to-l from-transparent to-[#C9A84C]/50 origin-left"
+          />
         </motion.div>
 
         {/* Main headline */}
         <h1
           style={{ fontFamily: "var(--font-heading)" }}
-          className="text-6xl md:text-8xl lg:text-9xl font-light text-white leading-none mb-6 tracking-tight"
+          className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-light text-white leading-none mb-4 sm:mb-6 tracking-tight"
           aria-label="Donde el arte vive eterno"
         >
           {headline.map((word, wi) => (
-            <span key={wi} className="inline-block mr-4 last:mr-0 overflow-hidden">
+            <span key={wi} className="inline-block mr-2 sm:mr-4 last:mr-0 overflow-hidden">
               {word.split("").map((char, ci) => (
                 <motion.span
                   key={ci}
@@ -98,13 +125,17 @@ export default function Hero() {
           ))}
         </h1>
 
-        {/* Gold accent line */}
+        {/* Gold accent ornament */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
+          initial={{ opacity: 0, scaleX: 0.6 }}
+          animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-32 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mb-8"
-        />
+          className="flex items-center gap-2 mb-6 sm:mb-8"
+        >
+          <div className="w-10 sm:w-16 h-px bg-gradient-to-r from-transparent to-[#C9A84C]/80" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-[#C9A84C] flex-shrink-0" />
+          <div className="w-10 sm:w-16 h-px bg-gradient-to-l from-transparent to-[#C9A84C]/80" />
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
@@ -112,7 +143,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.4 }}
           style={{ fontFamily: "var(--font-body)" }}
-          className="text-[#f5f0e8]/50 text-sm md:text-base font-light tracking-[0.15em] max-w-lg mb-12"
+          className="text-[#f5f0e8]/60 text-xs sm:text-sm md:text-base font-light tracking-[0.1em] sm:tracking-[0.15em] max-w-sm sm:max-w-lg mb-8 sm:mb-12"
         >
           Diamantes y metales preciosos elaborados a mano, esculpidos en joyas eternas para quienes abrazan lo extraordinario.
         </motion.p>
@@ -128,10 +159,11 @@ export default function Hero() {
             href="#collections"
             whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(201,168,76,0.25)" }}
             whileTap={{ scale: 0.97 }}
-            className="px-10 py-4 bg-gradient-to-r from-[#C9A84C] to-[#E8C97A] text-black text-[11px] tracking-[0.35em] uppercase font-medium transition-all duration-300"
+            className="px-10 py-4 bg-gradient-to-r from-[#C9A84C] to-[#E8C97A] text-black text-[11px] tracking-[0.35em] uppercase font-medium transition-all duration-300 flex items-center gap-3"
             style={{ fontFamily: "var(--font-body)" }}
           >
             Explorar Coleccion
+            <span className="text-xs translate-y-px">→</span>
           </motion.a>
           <motion.a
             href="#showcase"

@@ -63,7 +63,7 @@ export default function JewelryShowcase() {
     <section
       id="showcase"
       ref={ref}
-      className="relative py-32 overflow-hidden bg-gradient-to-b from-[#050505] via-[#0a0803] to-[#050505]"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-[#050505] via-[#0a0803] to-[#050505]"
     >
       {/* Section glow */}
       <div
@@ -79,7 +79,7 @@ export default function JewelryShowcase() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <p
             style={{ fontFamily: "var(--font-body)" }}
@@ -101,7 +101,7 @@ export default function JewelryShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* 3D Viewer */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -117,7 +117,7 @@ export default function JewelryShowcase() {
                   boxShadow: "inset 0 0 60px rgba(201,168,76,0.04)",
                 }}
               />
-              <div className="h-[520px]">
+              <div className="h-[300px] sm:h-[420px] lg:h-[520px]">
                 <JewelryViewer3D config={config} />
               </div>
               {/* Corner decorations */}
@@ -212,7 +212,7 @@ export default function JewelryShowcase() {
               </label>
             </div>
 
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
               <div>
                 <p
                   style={{ fontFamily: "var(--font-body)" }}

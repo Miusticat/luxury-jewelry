@@ -33,7 +33,7 @@ export default function NuestrasSedes() {
     <section
       id="sedes"
       ref={ref}
-      className="relative py-32 overflow-hidden bg-[#050505]"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-[#050505]"
     >
       {/* Ambient glow */}
       <div
@@ -50,7 +50,7 @@ export default function NuestrasSedes() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <p
             style={{ fontFamily: "var(--font-body)" }}
@@ -99,7 +99,7 @@ export default function NuestrasSedes() {
             </div>
             <p
               style={{ fontFamily: "var(--font-body)" }}
-              className="text-[9px] tracking-[0.22em] uppercase text-[#f5f0e8]/25"
+              className="hidden sm:block text-[9px] tracking-[0.22em] uppercase text-[#f5f0e8]/25"
             >
               Arrastre · Zoom · Marcadores
             </p>
@@ -121,7 +121,7 @@ export default function NuestrasSedes() {
               )}
 
               {/* Leaflet map */}
-              <div className="h-[520px]">
+              <div className="h-[300px] sm:h-[400px] lg:h-[520px]">
                 <GTAVMap activeStoreId={activeMapStoreId} onStoreSelect={setActiveMapStoreId} />
               </div>
             </div>

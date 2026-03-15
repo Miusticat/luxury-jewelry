@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
@@ -13,6 +14,7 @@ const products = [
     price: "$48,500",
     material: "Oro Rosa 18K · D VVS1",
     tag: "Mas Vendido",
+    imageSrc: "/products/lumiere-solitaire.jpg",
     gradient: "from-[#1a1208] via-[#2a1e0a] to-[#0d0d0d]",
     accentGlow: "rgba(201,168,76,0.15)",
   },
@@ -23,6 +25,7 @@ const products = [
     price: "$12,800",
     material: "Platino · Zafiro",
     tag: "Nuevo",
+    imageSrc: "/products/etoile-pendant.jpg",
     gradient: "from-[#080d1a] via-[#0a1222] to-[#0d0d0d]",
     accentGlow: "rgba(80,120,201,0.12)",
   },
@@ -33,6 +36,7 @@ const products = [
     price: "$8,200",
     material: "Oro Amarillo 18K · Esmeralda",
     tag: null,
+    imageSrc: "/products/cascade-drops.jpg",
     gradient: "from-[#071308] via-[#0b1a0c] to-[#0d0d0d]",
     accentGlow: "rgba(40,160,80,0.1)",
   },
@@ -43,6 +47,7 @@ const products = [
     price: "$22,000",
     material: "Platino · 3.0 ct Total",
     tag: "Edicion Limitada",
+    imageSrc: "/products/eternity-band.jpg",
     gradient: "from-[#141414] via-[#1c1c1c] to-[#0d0d0d]",
     accentGlow: "rgba(220,220,220,0.12)",
   },
@@ -53,6 +58,7 @@ const products = [
     price: "$31,000",
     material: "Oro Blanco 18K · Rubies",
     tag: null,
+    imageSrc: "/products/serpentine-cuff.jpg",
     gradient: "from-[#1a0808] via-[#1e0b0b] to-[#0d0d0d]",
     accentGlow: "rgba(201,60,60,0.12)",
   },
@@ -63,6 +69,7 @@ const products = [
     price: "$15,400",
     material: "Oro 18K · Multi piedra",
     tag: "Nuevo",
+    imageSrc: "/products/aurora-cluster.jpg",
     gradient: "from-[#100d1a] via-[#16102a] to-[#0d0d0d]",
     accentGlow: "rgba(140,80,220,0.12)",
   },
@@ -78,6 +85,8 @@ function ProductCard({
   inView: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const showRealImage = !!product.imageSrc && !imageError;
 
   return (
     <motion.div
@@ -92,6 +101,18 @@ function ProductCard({
       <div className="relative overflow-hidden border border-[#C9A84C]/10 hover:border-[#C9A84C]/35 transition-colors duration-500">
         {/* Image area */}
         <div className={`relative h-72 bg-gradient-to-br ${product.gradient} overflow-hidden`}>
+          {showRealImage && (
+            <Image
+              src={product.imageSrc}
+              alt={product.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
+              onError={() => setImageError(true)}
+              priority={index < 3}
+            />
+          )}
+
           {/* Glow */}
           <motion.div
             animate={{ opacity: hovered ? 1 : 0.3 }}
@@ -103,24 +124,30 @@ function ProductCard({
           />
 
           {/* Decorative ring shape placeholder */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              animate={{ rotate: hovered ? 360 : 0 }}
-              transition={{ duration: 8, ease: "linear", repeat: hovered ? Infinity : 0 }}
-              className="relative"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-[#C9A84C]/30 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full border border-[#C9A84C]/20 flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#E8C97A] opacity-80" />
+          {!showRealImage && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                animate={{ rotate: hovered ? 360 : 0 }}
+                transition={{ duration: 8, ease: "linear", repeat: hovered ? Infinity : 0 }}
+                className="relative"
+              >
+                <div className="w-28 h-28 rounded-full border-2 border-[#C9A84C]/30 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full border border-[#C9A84C]/20 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#E8C97A] opacity-80" />
+                  </div>
                 </div>
-              </div>
-              {/* Orbit dot */}
-              <div
-                className="absolute w-2 h-2 rounded-full bg-[#C9A84C] top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ boxShadow: "0 0 8px rgba(201,168,76,0.8)" }}
-              />
-            </motion.div>
-          </div>
+                {/* Orbit dot */}
+                <div
+                  className="absolute w-2 h-2 rounded-full bg-[#C9A84C] top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  style={{ boxShadow: "0 0 8px rgba(201,168,76,0.8)" }}
+                />
+              </motion.div>
+            </div>
+          )}
+
+          {showRealImage && (
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none" />
+          )}
 
           {/* Tag */}
           {product.tag && (
@@ -199,14 +226,14 @@ export default function ProductGallery() {
       : products.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="collections" ref={ref} className="py-32 bg-[#050505]">
+    <section id="collections" ref={ref} className="py-16 md:py-24 lg:py-32 bg-[#050505]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-8"
+          className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-6 md:gap-8"
         >
           <div>
             <p
@@ -238,7 +265,7 @@ export default function ProductGallery() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.3 }}
-          className="flex gap-2 flex-wrap mb-12"
+          className="flex gap-2 flex-wrap mb-8 md:mb-12"
         >
           {categories.map((cat) => (
             <button

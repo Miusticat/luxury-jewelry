@@ -34,7 +34,7 @@ export default function CraftsmanshipSection() {
     <section
       id="craftsmanship"
       ref={ref}
-      className="relative py-36 overflow-hidden bg-[#050505]"
+      className="relative py-16 md:py-24 lg:py-36 overflow-hidden bg-[#050505]"
     >
       {/* Background texture lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
@@ -97,7 +97,7 @@ export default function CraftsmanshipSection() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-8"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8"
             >
               {[
                 { value: "38+", label: "Anos de Excelencia" },

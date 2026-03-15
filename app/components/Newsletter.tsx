@@ -12,7 +12,7 @@ export default function Newsletter() {
   return (
     <section
       ref={ref}
-      className="relative py-40 overflow-hidden"
+      className="relative py-20 md:py-32 lg:py-40 overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #0a0803 0%, #050505 50%, #08060a 100%)",
       }}
