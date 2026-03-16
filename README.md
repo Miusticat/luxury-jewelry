@@ -1,6 +1,6 @@
 # Luxury Jewelry
 
-Luxury Jewelry es un proyecto frontend desarrollado dentro del contexto de GTA WORLD ES, una comunidad de roleplay de GTA V con estandares altos de inmersion, detalle y coherencia visual. La propuesta busca trasladar esa misma exigencia a una experiencia digital de joyeria, construyendo una marca ficticia con una presencia premium, realista y personalizada dentro del universo de juego.
+Luxury Jewelry es un proyecto frontend desarrollado dentro del contexto de GTA WORLD ES, una comunidad de roleplay de GTA V con estandares altos de realismo. La propuesta busca crear una experiencia funcional y unica de Joyeria personalizada dentro del universo de GTA WORLD.
 
 ## Demo
 
