@@ -8,9 +8,9 @@ https://luxury-jewelry-pi.vercel.app/
 
 ## Sobre el proyecto
 
-Este proyecto fue creado como parte de la experiencia de GTA WORLD ES, con la intencion de aportar una experiencia de joyeria realista, exclusiva y unica. 
+Este proyecto fue creado como parte de la experiencia de GTA WORLD ES.
 
-Desde lo tecnico y visual, el objetivo fue construir una interfaz con presencia, funcionalidad y una capa interactiva que aporta valor real a la experiencia: un visor 3D para personalizar un joyas, una estructura modular de componentes y una seccion de google maps de GTA V con sedes en Los Santos. 
+Desde lo tecnico y visual, el objetivo fue construir una interfaz interactiva, moderna y funcional que integra tecnologias como: un visor 3D para personalizar un joyas, una estructura modular de componentes y una seccion de google maps de GTA V con sedes en Los Santos. 
 
 ## Lo que implementa
 
